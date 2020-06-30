@@ -41,7 +41,10 @@ void clear_timer0() {
 }
 
 void blocking_us(int us) {
-    duration = 65535 - us * US;
+    if (US < 1)
+        duration = 65535 - us * 1;
+    else 
+        duration = 65535 - us * US;
     block = TRUE;
     set_timer0();
     while(block);
@@ -57,9 +60,13 @@ void blocking_ms(int ms) {
 }
 
 void blocking_s(int s) {
-    
+    int i = s * 1000;
+    for(; i > 0; i--) 
+        blocking_us(1000);
+    /*
     int i = s * 1000 / 50;
     for(; i > 0; i--) 
         blocking_ms(50);
+    */
 }
 #endif
