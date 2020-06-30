@@ -10,6 +10,38 @@ Project File Date:  06/29/2020
 Rebuild target 'Target 1'
 assembling STARTUP.A51...
 compiling main.c...
-main.c(8): warning C173: missing return-expression
-main.c(13): error C141: syntax error near 'void'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INIT?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?ROM_CMD?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?FUNCTION_CMD?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?READ_DS18B20?MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BLOCKING_US?MAIN
+Program Size: data=25.1 xdata=0 code=918
+creating hex file from "DS18B20"...
+"DS18B20" - 0 Error(s), 5 Warning(s).
+Clean started: Project: 'DS18B20'
+   deleting intermediate output files for target 'Target 1'
+0AH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  BLOCK_FOR_1US
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 000DH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  BLOCK_FOR_1US
+    MODULE:  main.obj (MAIN)
+    ADDRESS: 0010H
+Program Size: data=9.0 xdata=0 code=42
+creating hex file from "DS18B20"...
+"DS18B20" - 0 Error(s), 8 Warning(s).
+or near 'H'
+time.h(20): error C141: syntax error near 'LOOP4'
+time.h(20): error C141: syntax error near '70'
+time.h(20): error C141: syntax error near 'H'
+time.h(21): error C141: syntax error near '}'
+main.c(18): error C202: 'p10': undefined identifier
 Target not created

@@ -6,4 +6,9 @@
 *.LST
 *.DBK
 *.PWI
+*.SRC
+*.ls1
+*.lnp
+*.M51
+*.SDF
 
