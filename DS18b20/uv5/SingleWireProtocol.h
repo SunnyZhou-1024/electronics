@@ -81,51 +81,34 @@ void init() {
         blocking_us(30);
     }
     blocking_us(480);
-    //P1 = 170;
 }
 
-unsigned char ReadOneChar(void)
-{
-unsigned char i=0;
-unsigned char dat = 0;
-for (i=8;i>0;i--)
- {
-  DQ = 0; // ?????
-  dat>>=1;
-  DQ = 1; // ?????
-  if(DQ)
-   dat|=0x80;
-  blocking_us(20);
- }
- return(dat);
-}
-
-unsigned short read_ds18b20() {
+signed short read_ds18b20() {
     unsigned char cs[9] = {0};
     signed char i = 9;
-    unsigned short temp = 0;
-/*     init();
+    signed short temp = 0;
+/*    init();
     write(0xcc);
     write(0x4e);
     write(0x07);
     write(0xba);
     write(0x7f); */
-   init();
-    write(0xcc);
-    write(0x44);
-    blocking_us(500);
-    while (!DQ);
+    
+    // Issue temperature convert command
+    init();
+    write(0xcc); // Skip ROM, if there are more than one 1-wire device represence, we should try to match ROM
+    write(0x44); // Convert temperature
+    blocking_us(500); 
+    while (!DQ); // Slave will pull low the bus while conducting conversion
     init();
     write(0xcc);
-    write(0xBE);
+    write(0xBE); // Read Scratchpad
     for (; i>0; i--) {
-        cs[i-1] = read_byte();
+        cs[i-1] = read_byte(); 
     }
-    temp = temp | (cs[8] << 4);
-    temp = temp | (cs[7] >> 4);
-    P1 = cs[8];
-    P3 = cs[7];
-    return cs[8];
+    temp = temp | (cs[8] >> 4);
+    temp = temp | (cs[7] << 4);
+    return temp;
 }
 
 #endif

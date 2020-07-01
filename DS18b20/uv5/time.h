@@ -1,18 +1,6 @@
 #ifndef __TIMEING__
 #define __TIMEING__
 
-#define T 12  // Clock cycle
-#define CLOCK 11059200 // Master clock frequency
-#define US CLOCK/T/1000/1000
-#define MS CLOCK/T/1000
-
-#ifndef TRUR
-#define TRUE 1
-#endif
-
-#ifndef FALSE
-#define FALSE 0
-#endif
 
 long time = 0;
 bit block = TRUE;
@@ -24,6 +12,7 @@ void timer0_isr() interrupt 1 using 1{
     TH0 = duration >> 8;
     block = FALSE;
 }
+
 
 void set_timer0() {
     TMOD = 0x01; //set timer1 as mode1 (16-bit)
