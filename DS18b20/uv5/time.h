@@ -41,14 +41,18 @@ void clear_timer0() {
 }
 
 void blocking_us(int us) {
-    if (US < 1)
+ /*    int i = us /4 ;
+    while (i > 0) {
+        i--;
+    }*/
+   if (US < 1)
         duration = 65535 - us * 1;
     else 
         duration = 65535 - us * US;
     block = TRUE;
     set_timer0();
     while(block);
-    clear_timer0();
+    clear_timer0(); 
 }
 
 void blocking_ms(int ms) {

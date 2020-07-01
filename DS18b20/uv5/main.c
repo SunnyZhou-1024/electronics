@@ -23,13 +23,13 @@ void main() {
     blocking_s(3);
     p12 = 1;
     blocking_s(4);
-    p13 = 1; */
-    
+    p13 = 1; 
+    */
     while(TRUE) {
         temp = read_ds18b20();
         if (0x02 >> 1 & 1) {
-            p15 = 0;
+            //p15 = 0;
         }
-        P3 = temp;
+        //P3 = temp;
     }
 }
